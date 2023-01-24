@@ -1,0 +1,72 @@
+<html>
+<head>
+<style>
+body {
+  background-image: url('https://th.bing.com/th/id/R.1d7cb6862cf0470ea13adfdf4ef5aba4?rik=T4VmwpMmQGEoOA&riu=http%3a%2f%2fgetwallpapers.com%2fwallpaper%2ffull%2f2%2f0%2f5%2f165863.jpg&ehk=PmEgFR2HtNK%2f7aKmqMKzSTuicLAD%2f1HJFT0bPojnxzU%3d&risl=&pid=ImgRaw&r=0');
+  background-repeat: no-repeat;
+  background-attachment: fixed; 
+
+}
+</style>
+</head>
+<body>
+
+<div class="col-md-6 offset-md-3">
+ 
+    <div class="card card-container">
+        <div class="col-md-6 offset-md-3">
+            <h3>Create Book Details </h3>
+            <form [formGroup]="form" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="bookname">Book Name:</label>
+                    <input formControlName="bookname" type="text" class="form-control" id="bookname" 
+                    name="bookname" [(ngModel)]="book.bookName">
+                </div>
+
+                <div *ngIf=" f['bookname'].touched && f['bookname'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['bookname'].errors && f['bookname'].errors['required']">
+                        Book Name is mandatory**
+                    </div>
+                    <div *ngIf="f['bookname'].errors && f['bookname'].errors['minlength']">
+                        Minimum characters must be 3 characters**
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="authorname">Author Name:</label>
+                    <input formControlName="authorname" type="text" class="form-control" id="authorname" name="authorname"
+                    [(ngModel)]="book.authorName">
+                </div>
+
+                <div *ngIf=" f['authorname'].touched && f['authorname'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['authorname'].errors && f['authorname'].errors['required']">
+                       Author Name is mandatory**
+                    </div>
+                    <div *ngIf="f['authorname'].errors && f['authorname'].errors['minlength']">
+                        Minimum characters must be 3 characters**
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="bookprice">Book Prices:</label>
+                    <input formControlName="bookprice" type="text" class="form-control" id="bookprice" name="bookprice"
+                    [(ngModel)]="book.bookPrice">
+                </div>
+
+                <div *ngIf=" f['bookprice'].touched && f['bookprice'].invalid" class="alert alert-danger">
+                    <div *ngIf="f['bookprice'].errors && f['bookprice'].errors['required']">
+                       bookPrice is mandatory**
+                    </div>
+                  
+                </div>
+
+                <br>
+                <button class="btn btn-success" type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+
+</div>
+</body>
+</html>
+
